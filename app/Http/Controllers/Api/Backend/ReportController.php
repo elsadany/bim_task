@@ -45,7 +45,7 @@ class ReportController extends Controller
         
             if($one->total>$transactionPay&&(strtotime($one->due_to)>strtotime(date('Y-m-t',strtotime($date)))))
             $upstandang+=$one->total-$transactionPay;
-            else
+            elseif($one->total>$transactionPay&&(strtotime($one->due_to)<strtotime(date('Y-m-t',strtotime($date)))))
             $due+=$one->total-$transactionPay;
         }
         $reportData[$key]['due']=$due;
